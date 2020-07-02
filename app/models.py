@@ -1,8 +1,4 @@
-from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
-
-app = Flask(__name__)
-db = SQLAlchemy(app)
+from .meta import db
 
 class Role(db.Model):
     __tablename__ = 'roles'
