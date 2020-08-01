@@ -1,5 +1,6 @@
 from flask import render_template, make_response
 from . import main
+from ..models import User
 
 @main.route('/')
 def index():

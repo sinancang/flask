@@ -116,7 +116,7 @@ class User(UserMixin, db.Model):
                 self.role = Role.query.filter_by(default=True).first()
 
     def can(self, perm):
-        return self,role is not None and self.role.has_permission(perm)
+        return self.role is not None and self.role.has_permission(perm)
 
     def is_administrator(self):
         return self.can(Permission.ADMIN)
