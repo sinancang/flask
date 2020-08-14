@@ -1,6 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, TextAreaField, PasswordField, SubmitField, SelectField, BooleanField
 from wtforms.validators import Length, DataRequired, Email, EqualTo, Regexp
+from ..models import Role
 
 class NameForm(FlaskForm):
     name = StringField('What is your username', validators=[DataRequired()])
