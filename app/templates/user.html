@@ -4,15 +4,17 @@
 {% block page_content %}
 <div class="page-header">
 <img class="img-rounded profile-thumbnail" src="{{ user.gravatar(size=256) }}">
-<h1>{{ user.username }}</h1>
-</div>    
+<h1>{{ user.username }}</h1>   
 {% if user.name or user.location %}
     <p>
         {% if user.name %}{{ user.name }}{% endif %}
+    </p>
+    <p>
         {% if user.location %}
-            From <a href="http://maps.google.com/?q={{ user.location }}">
+            from <a href="http://maps.google.com/?q={{ user.location }}">
                 {{ user.location }}
             </a>
+    </p>
         {% endif %}
     </p>
     {% endif %}
@@ -20,10 +22,6 @@
     <p><a href="mailto:{{ user.email }}">{{ user.email }}</a></p>
     {% endif %}
     {% if user.about_me %}<p>{{ user.about_me }}</p>{% endif %}
-    <p>
-        Member since {{ moment(user.member_since).format('L') }}.
-        Last seen {{ moment(user.last_seen).fromNow() }}.
-    </p>
 {% if user == current_user %}
 <a class="btn btn-default" href="{{ url_for('.edit_profile') }}">
 	Edit Profile
@@ -33,5 +31,10 @@
 <a class="btn btn-danger" href="{{ url_for('.edit_profile_admin', id=user.id) }}">
 			 Edit Profile [Admin]
 </a>
+</div>
+    <p>
+        Member since {{ moment(user.member_since).format('L') }}.
+        Last seen {{ moment(user.last_seen).fromNow() }}.
+    </p>
 {% endif %}
 {% endblock %}
